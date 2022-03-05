@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+<head>
+	<meta charset="utf-8">
+	<title>基本设置</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="../layui/css/layui.css" media="all">
+	<link rel="stylesheet" href="../css/admin.css" media="all">
+	<link rel="stylesheet" href="css/main.css" media="all">
+	<style>
+		.orgbox {
+			display: inline-block;
+			height: 510px;
+			border: 1px solid #ddd;
+			overflow: auto;
+		}
+
+		.site-tips {
+			display: inline-block;
+			vertical-align: top;
+		}
+	</style>
+</head>
+
+<body style="height: 100%;overflow: hidden;">
+
+	<div class="layui-fluid" id="LAY-app-table" style="height: 95%;overflow: hidden;">
+		<div class="layui-card layui-row layui-col-space15" style="padding: 15px;height: 100%;">
+			<div class="layui-card-header">权限设置</div>
+			<div class="orgbox layui-col-md2">
+				<ul id="demo2"></ul>
+			</div>
+			<div class="site-tips layui-col-md10" id="demo2-view" style="height: 95%;">
+				<form class="layui-form" action="" lay-filter="component-form-element" style="height: 100%;">
+					<div style="height:85%;">
+						<div class="layui-form-item">
+							<div class="layui-col-md3">
+								<label class="layui-form-label">类型：</label>
+								<div class="layui-input-block block">
+									<select lay-filter="business">
+										<option value=""></option>
+										<option value="1">岗位</option>
+										<option value="2">员工</option>
+									</select>
+								</div>
+							</div>
+							<div class="layui-col-md6">
+								<div class="layui-inline"> 
+									<label class="layui-form-label">员工</label> 
+									<div class="layui-input-inline" style="width: 120px;"> 
+										 <select id="bm"></select> 
+									</div> 
+									<div class="layui-form-mid">-</div> 
+									<div class="layui-input-inline" style="width: 120px;"> 
+										  <select id="yg"></select> 
+									</div> 
+								  </div>
+							</div>
+						</div>
+						<div id="viewForm" style="height:100%;overflow-x: hidden;overflow-y: auto;"></div>
+						<div class="layui-form-item" style="margin-top: 10px;">
+							<div class="layui-input-block block">
+								<button class="layui-btn" lay-submit lay-filter="component-form-element">立即提交</button>
+								<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script id="formBox" type="text/html">
+		<div></div>
+		<div style="padding:10px;">
+			<div class="layui-row layui-col-space15">
+				<div class="layui-col-md12">
+					<div class="layui-card">
+						<div class="layui-card-body layui-row">
+							<div class="layui-col-md12">
+								<table class="layui-table">
+									<tbody>
+										<tr>
+											<th width="40%">录入房源</th>
+											<td>
+												<input type="checkbox" name="home" lay-skin="primary" title="二手房">
+												<input type="checkbox" name="home" lay-skin="primary" title="租房">
+												<input type="checkbox" name="home" lay-skin="primary" title="新房">
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">发布外网</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">置顶房源</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">激活房源</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">删除房源</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">分配房源</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%"><input type="checkbox" name="home" lay-skin="primary"
+													title="出租转出售"></th>
+											<td style="text-align: right;"></td>
+										</tr>
+										<tr>
+											<th width="40%"><input type="checkbox" name="home" lay-skin="primary"
+													title="出售转出租"></th>
+											<td style="text-align: right;"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</script>
+	<script id="formBox1" type="text/html">
+		<div></div>
+		<div style="padding:10px;">
+			<div class="layui-row layui-col-space15">
+				<div class="layui-col-md12">
+					<div class="layui-card">
+						<div class="layui-card-body layui-row">
+							<div class="layui-col-md12">
+								<table class="layui-table">
+									<tbody>
+										<tr>
+											<th width="40%">查看公盘门牌</th>
+											<td style="text-align: right;">
+												<input type="checkbox" name="home" lay-skin="primary" title="二手房">
+												<input type="checkbox" name="home" lay-skin="primary" title="租房">
+												<input type="checkbox" name="home" lay-skin="primary" title="新房">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">查看公盘业主信息</th>
+											<td style="text-align: right;">
+												<input type="checkbox" name="home" lay-skin="primary" title="二手房">
+												<input type="checkbox" name="home" lay-skin="primary" title="租房">
+												<input type="checkbox" name="home" lay-skin="primary" title="新房">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">查看私盘门牌</th>
+											<td style="text-align: right;">
+												<input type="checkbox" name="home" lay-skin="primary" title="二手房">
+												<input type="checkbox" name="home" lay-skin="primary" title="租房">
+												<input type="checkbox" name="home" lay-skin="primary" title="新房">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">查看私盘业主信息</th>
+											<td style="text-align: right;">
+												<input type="checkbox" name="home" lay-skin="primary" title="二手房">
+												<input type="checkbox" name="home" lay-skin="primary" title="租房">
+												<input type="checkbox" name="home" lay-skin="primary" title="新房">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">修改公盘基本信息</th>
+											<td style="text-align: right;">
+												<input type="checkbox" name="home" lay-skin="primary" title="二手房">
+												<input type="checkbox" name="home" lay-skin="primary" title="租房">
+												<input type="checkbox" name="home" lay-skin="primary" title="新房">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">小区信息</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">门牌</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">业主信息</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">修改私盘基本信息</th>
+											<td style="text-align: right;">
+												<input type="checkbox" name="home" lay-skin="primary" title="二手房">
+												<input type="checkbox" name="home" lay-skin="primary" title="租房">
+												<input type="checkbox" name="home" lay-skin="primary" title="新房">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">小区信息</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">门牌</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">业主信息</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">修改性质</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">
+												查看附件
+											</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script id="formBox2" type="text/html">
+		<div></div>
+		<div style="padding:10px;">
+			<div class="layui-row layui-col-space15">
+				<div class="layui-col-md12">
+					<div class="layui-card">
+						<div class="layui-card-body layui-row">
+							<div class="layui-col-md12">
+								<table class="layui-table">
+									<tbody>
+										<tr>
+											<th width="40%">查看个人房源采集</th>
+											<td>
+												<input type="checkbox" name="home" lay-skin="primary" title="二手房">
+												<input type="checkbox" name="home" lay-skin="primary" title="租房">
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">录入新的小区</th>
+											<td style="text-align: right;"></td>
+										</tr>
+										<tr>
+											<th width="40%">添加房源照片</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">管理房源照片</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">删除实勘照片</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<!-- <tr>
+<th width="40%">
+<input type="checkbox" name="home" lay-skin="primary" title="导出照片">
+</th>
+<td style="text-align: right;">
+<div class="layui-input-inline" style="text-align: left;">
+<select name="quyu">
+<option value="全公司">全公司</option>
+<option value="本区域">本区域</option>
+<option value="本门店">本门店</option>
+<option value="本小组">本小组</option>
+<option value="本人">本人</option>
+</select>
+</div>
+</td>
+</tr> -->
+										<tr>
+											<th width="40%">查看电话无须跟进</th>
+											<td style="text-align: right;">
+												<input type="checkbox" name="home" lay-skin="primary" title="二手房">
+												<input type="checkbox" name="home" lay-skin="primary" title="租房">
+												<input type="checkbox" name="home" lay-skin="primary" title="新房">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">查看日志信息</th>
+											<td style="text-align: right;">
+												<input type="checkbox" name="home" lay-skin="primary" title="二手房">
+												<input type="checkbox" name="home" lay-skin="primary" title="租房">
+												<input type="checkbox" name="home" lay-skin="primary" title="新房">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">允许查看房源电话数量</th>
+											<td style="text-align: left;">
+												<div class="layui-inline layui-form-item" style="margin-bottom: 0;">
+													<div class="layui-input-inline" style="width: 100px;">
+														<input type="text" name="price_min" placeholder="" autocomplete="off"
+															class="layui-input">
+													</div>
+													<div class="layui-form-mid">条/天</div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">允许查看个人房源电话数量</th>
+											<td style="text-align: left;">
+												<div class="layui-inline layui-form-item" style="margin-bottom: 0;">
+													<div class="layui-input-inline" style="width: 100px;">
+														<input type="text" name="price_min" placeholder="" autocomplete="off"
+															class="layui-input">
+													</div>
+													<div class="layui-form-mid">条/天</div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">允许拥有私盘数量</th>
+											<td style="text-align: left;">
+												<div class="layui-inline layui-form-item" style="margin-bottom: 0;">
+													<div class="layui-input-inline" style="width: 100px;">
+														<input type="text" name="price_min" placeholder="" autocomplete="off"
+															class="layui-input">
+													</div>
+													<div class="layui-form-mid">条/天</div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">管理抢盘</th>
+											<td style="text-align: right;">
+												<input type="checkbox" name="home" lay-skin="primary" title="二手房">
+												<input type="checkbox" name="home" lay-skin="primary" title="租房">
+												<input type="checkbox" name="home" lay-skin="primary" title="新房">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%"><input type="checkbox" name="home" lay-skin="primary"
+													title="新增出售房源可选公/私盘"></th>
+											<td style="text-align: right;"></td>
+										</tr>
+										<tr>
+											<th width="40%"><input type="checkbox" name="home" lay-skin="primary"
+													title="新增出售房源默认为私盘"></th>
+											<td style="text-align: right;"></td>
+										</tr>
+										<tr>
+											<th width="40%"><input type="checkbox" name="home" lay-skin="primary"
+													title="新增出租房源可选公/私盘"></th>
+											<td style="text-align: right;"></td>
+										</tr>
+										<tr>
+											<th width="40%"><input type="checkbox" name="home" lay-skin="primary"
+													title="新增出租房源默认为私盘"></th>
+											<td style="text-align: right;"></td>
+										</tr>
+										<tr>
+											<th width="40%"><input type="checkbox" name="home" lay-skin="primary"
+													title="新增房源必须符合有效性规则"></th>
+											<td style="text-align: left;colort:#ccc;">楼层<=总层,底价<=报价，套内面积<建筑面积</td> </tr> <tr>
+											<th width="40%">每人最多可以拥有</th>
+											<td style="text-align: left;">
+												<div class="layui-inline layui-form-item" style="margin-bottom: 0;">
+													<div class="layui-input-inline" style="width: 100px;">
+														<input type="text" name="price_min" placeholder="" autocomplete="off"
+															class="layui-input">
+													</div>
+													<div class="layui-form-mid">条房源</div>
+												</div>
+											</td>
+										</tr>
+										<!-- <tr>
+<th width="40%">每人最多可以拥有聚焦房源</th>
+<td style="text-align: left;">
+<div class="layui-inline layui-form-item" style="margin-bottom: 0;">
+<div class="layui-input-inline" style="width: 100px;">
+<input type="text" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+</div>
+<div class="layui-form-mid">条</div>
+</div>
+</td>
+</tr> -->
+										<!-- <tr>
+<th width="40%">
+<input type="checkbox" name="home" lay-skin="primary" title="每人最多可以拥有私盘"></th>
+<td style="text-align: left;">
+<div class="layui-inline layui-form-item" style="margin-bottom: 0;">
+<div class="layui-input-inline" style="width: 100px;">
+<input type="text" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+</div>
+<div class="layui-form-mid">条私盘</div>
+<input type="checkbox" name="home" lay-skin="primary" title="数量只对有效私盘">
+</div>
+</td>
+</tr> -->
+										<tr>
+											<th width="40%">提醒规则</th>
+											<td style="text-align: left;">
+												<div class="layui-inline layui-form-item" style="margin-bottom: 0;">
+													<div class="layui-form-mid">出售房源跟进逾期超过</div>
+													<div class="layui-input-inline" style="width: 100px;">
+														<input type="text" name="price_min" placeholder="" autocomplete="off"
+															class="layui-input">
+													</div>
+													<div class="layui-form-mid">天警告，超过</div>
+													<div class="layui-input-inline" style="width: 100px;">
+														<input type="text" name="price_min" placeholder="" autocomplete="off"
+															class="layui-input">
+													</div>
+													<div class="layui-form-mid">天进入本门店抢盘池，超过</div>
+													<div class="layui-input-inline" style="width: 100px;">
+														<input type="text" name="price_min" placeholder="" autocomplete="off"
+															class="layui-input">
+													</div>
+													<div class="layui-form-mid">天进入本区域抢盘池</div>
+												</div>
+												<div class="layui-inline layui-form-item" style="margin-bottom: 0;">
+													<div class="layui-form-mid">出租房源跟进逾期超过</div>
+													<div class="layui-input-inline" style="width: 100px;">
+														<input type="text" name="price_min" placeholder="" autocomplete="off"
+															class="layui-input">
+													</div>
+													<div class="layui-form-mid">天警告，超过</div>
+													<div class="layui-input-inline" style="width: 100px;">
+														<input type="text" name="price_min" placeholder="" autocomplete="off"
+															class="layui-input">
+													</div>
+													<div class="layui-form-mid">天进入本门店抢盘池，超过</div>
+													<div class="layui-input-inline" style="width: 100px;">
+														<input type="text" name="price_min" placeholder="" autocomplete="off"
+															class="layui-input">
+													</div>
+													<div class="layui-form-mid">天进入本区域抢盘池</div>
+												</div>
+												<div class="layui-inline layui-form-item" style="margin-bottom: 0;">
+													<input type="checkbox" name="like1" lay-skin="primary"
+														title="抢盘时间按所属经纪人最后跟进时间来算">
+												</div>
+											</td>
+										</tr>
+										<!-- <tr>
+<th width="40%">必填项（出售）</th>
+<td style="text-align: left;" class="layui-row">
+<div class="layui-col-md12  margin">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔户型〕必填">
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔建房年份〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔来源〕必填">
+</div>
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔使用面积〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔委托方式〕必填">
+</div>
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔委托编号〕必填">
+</div>
+</div>
+<div class="layui-col-md12  margin">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔朝向〕必填">
+</div>
+<div class="layui-col-md12  margin">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔总层〕必填">
+</div>
+<div class="layui-col-md12  margin">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔装修〕必填">
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔等级〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔委托到期日期〕必填">
+</div>
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔现状〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔产权〕必填">
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<th width="40%">必填项（出租）</th>
+<td style="text-align: left;" class="layui-row">
+<div class="layui-col-md12  margin">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔户型〕必填">
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔建房年份〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔来源〕必填">
+</div>
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔使用面积〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔委托方式〕必填">
+</div>
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔委托编号〕必填">
+</div>
+</div>
+<div class="layui-col-md12  margin">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔朝向〕必填">
+</div>
+<div class="layui-col-md12  margin">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔总层〕必填">
+</div>
+<div class="layui-col-md12  margin">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔装修〕必填">
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔等级〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔委托到期日期〕必填">
+</div>
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔现状〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="房源〔产权〕必填">
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<th width="40%">
+<input type="checkbox" name="home" lay-skin="primary" title="写入跟进/勘察评论不可复制粘贴"></th>
+<td style="text-align: left;">
+<div class="layui-inline layui-form-item" style="margin-bottom: 0;">
+<div class="layui-form-mid">写入跟进字数不少于</div>
+<div class="layui-input-inline" style="width: 100px;">
+<input type="text" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+</div>
+<div class="layui-form-mid"> 汉字</div>
+</div>
+</td>
+</tr> -->
+										<tr>
+											<th width="40%">其它</th>
+											<td style="text-align: left;" class="layui-row">
+												<!-- <div class="layui-col-md12  margin">
+<div class="layui-inline  layui-form-item">
+<div class="layui-form-mid">房源状态由非有效状态改为有效状态时，提示更新委托日期且委托方式默认为</div>
+<div class="layui-input-inline" style="width: 80px;">
+<select>
+<option>未签</option>
+<option>签约</option>
+<option>独家</option>
+<option>托管</option>
+<option>收购</option>
+</select>
+</div>
+</div>
+</div> -->
+												<div class="layui-col-md12  margin">
+													<div class="layui-inline  layui-form-item">
+														<div class="layui-form-mid">每条房源每天看业主不超过</div>
+														<div class="layui-input-inline" style="width: 40px;">
+															<input type="number" name="price_min" placeholder=""
+																autocomplete="off" class="layui-input">
+														</div>
+														<div class="layui-form-mid">次</div>
+													</div>
+												</div>
+												<!-- <div class="layui-col-md12  margin">
+<input type="checkbox" name="" lay-skin="primary" title="优质房置顶显示">
+</div> -->
+												<div class="layui-col-md12  margin">
+													<input type="checkbox" name="" lay-skin="primary"
+														title="私盘看电话权限所有归属员工同维护归属员工权限">
+												</div>
+												<div class="layui-col-md12  margin">
+													<input type="checkbox" name="" lay-skin="primary"
+														title="房源修改权限所有归属员工同维护归属员工权限">
+												</div>
+												<!-- <div class="layui-col-md12  margin">
+<input type="checkbox" name="" lay-skin="primary" title="登记钥匙默认生成钥匙归属">
+</div> -->
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script id="formBox3" type="text/html">
+		<div></div>
+		<div style="padding:10px;">
+			<div class="layui-row layui-col-space15">
+				<div class="layui-col-md12">
+					<div class="layui-card">
+						<div class="layui-card-body layui-row">
+							<div class="layui-col-md12">
+								<table class="layui-table">
+									<tbody>
+										<tr>
+											<th width="40%">
+												录入客源
+											<td>
+												<input type="checkbox" name="home" lay-skin="primary" title="二手房">
+												<input type="checkbox" name="home" lay-skin="primary" title="租房">
+												<input type="checkbox" name="home" lay-skin="primary" title="新房">
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">置顶客源</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">激活客源</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">删除客源</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">分配客源</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script id="formBox4" type="text/html">
+		<div></div>
+		<div style="padding:10px;">
+			<div class="layui-row layui-col-space15">
+				<div class="layui-col-md12">
+					<div class="layui-card">
+						<div class="layui-card-body layui-row">
+							<div class="layui-col-md12">
+								<table class="layui-table">
+									<tbody>
+										<tr>
+											<th width="40%">查看公客基本信息</th>
+											<td style="text-align: right;">
+												<input type="checkbox" name="home" lay-skin="primary" title="二手房">
+												<input type="checkbox" name="home" lay-skin="primary" title="租房">
+												<input type="checkbox" name="home" lay-skin="primary" title="新房">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">查看私客基本信息</th>
+											<td style="text-align: right;">
+												<input type="checkbox" name="home" lay-skin="primary" title="二手房">
+												<input type="checkbox" name="home" lay-skin="primary" title="租房">
+												<input type="checkbox" name="home" lay-skin="primary" title="新房">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">修改公客基本信息</th>
+											<td style="text-align: right;">
+												<input type="checkbox" name="home" lay-skin="primary" title="二手房">
+												<input type="checkbox" name="home" lay-skin="primary" title="租房">
+												<input type="checkbox" name="home" lay-skin="primary" title="新房">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">修改私客基本信息</th>
+											<td style="text-align: right;">
+												<input type="checkbox" name="home" lay-skin="primary" title="二手房">
+												<input type="checkbox" name="home" lay-skin="primary" title="租房">
+												<input type="checkbox" name="home" lay-skin="primary" title="新房">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">修改客源性质</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script id="formBox5" type="text/html">
+		<div></div>
+		<div style="padding:10px;">
+			<div class="layui-row layui-col-space15">
+				<div class="layui-col-md12">
+					<div class="layui-card">
+						<div class="layui-card-body layui-row">
+							<div class="layui-col-md12">
+								<table class="layui-table">
+									<tbody>
+										<tr>
+											<th width="40%">查看电话无须跟进</th>
+											<td>
+												<input type="checkbox" name="home" lay-skin="primary" title="二手房">
+												<input type="checkbox" name="home" lay-skin="primary" title="租房">
+												<input type="checkbox" name="home" lay-skin="primary" title="新房">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">查看日志保密信息</th>
+											<td>
+												<input type="checkbox" name="home" lay-skin="primary" title="二手房">
+												<input type="checkbox" name="home" lay-skin="primary" title="租房">
+												<input type="checkbox" name="home" lay-skin="primary" title="新房">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">新增客源选项</th>
+											<td>
+												<input type="checkbox" name="home" lay-skin="primary" title="新增求购客源默认为私客">
+												<input type="checkbox" name="home" lay-skin="primary" title="新增求租客源默认为私客">
+											</td>
+										</tr>
+										<!-- <tr>
+<th width="40%">必填项设置(求购)</th>
+<td style="text-align:left" class="layui-row">
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔来源〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔等级〕必填">
+</div>
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔目的〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔城区〕必填">
+</div>
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔价格〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔付款方式〕必填">
+</div>
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔户型〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔楼层〕必填">
+</div>
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔商圈〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔面积〕必填">
+</div>
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="〔委托方式〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔现状〕必填">
+</div>
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔朝向〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔装修〕必填">
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<th width="40%">必填项设置(求租)</th>
+<td style="text-align:left" class="layui-row">
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔来源〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔等级〕必填">
+</div>
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔目的〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔城区〕必填">
+</div>
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔价格〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔付款方式〕必填">
+</div>
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔户型〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔楼层〕必填">
+</div>
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔商圈〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔面积〕必填">
+</div>
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="〔委托方式〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔现状〕必填">
+</div>
+</div>
+<div class="layui-col-md12  margin">
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔朝向〕必填">
+</div>
+<div class="layui-col-md6">
+<input type="checkbox" name="" lay-skin="primary" title="客源〔装修〕必填">
+</div>
+</div>
+</td>
+</tr> -->
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script id="formBox6" type="text/html">
+		<div></div>
+		<div style="padding:10px;">
+			<div class="layui-row layui-col-space15">
+				<div class="layui-col-md12">
+					<div class="layui-card">
+						<div class="layui-card-body layui-row">
+							<div class="layui-col-md12">
+								<table class="layui-table">
+									<tbody>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="添加合同"></th>
+											<td></td>
+										</tr>
+										<tr>
+											<th width="40%">查看合同</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">审核合同</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">作废合同</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">修改合同</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">打印合同</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="签约合同"></th>
+											<td style="text-align: right;"></td>
+										</tr>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="居间方选择名头"></th>
+											<td style="text-align: right;"></td>
+										</tr>
+										<tr>
+											<th width="40%">上传合同附件</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">
+												业绩分成
+											</th>
+											<td>
+												<input type="checkbox" name="home" lay-skin="primary"
+													title="业绩分成比例合计大于100%拒绝保存">
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">
+												出租合同（整租、分租）到期前
+											</th>
+											<td style="text-align:left;">
+												<div class="layui-inline layui-form-item" style="margin-bottom: 0;">
+													<div class="layui-input-inline" style="width: 100px;">
+														<input type="text" name="price_min" placeholder="" autocomplete="off"
+															class="layui-input">
+													</div>
+													<div class="layui-form-mid">天提醒签约员工</div>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script id="formBox7" type="text/html">
+		<div></div>
+		<div style="padding:10px;">
+			<div class="layui-row layui-col-space15">
+				<div class="layui-col-md12">
+					<div class="layui-card">
+						<div class="layui-card-body layui-row">
+							<div class="layui-col-md12">
+								<table class="layui-table">
+									<tbody>
+										<tr>
+											<th width="40%">添加业绩</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">查看业绩</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">删除业绩</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">财务管理</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script id="formBox8" type="text/html">
+		<div></div>
+		<div style="padding:10px;">
+			<div class="layui-row layui-col-space15">
+				<div class="layui-col-md12">
+					<div class="layui-card">
+						<div class="layui-card-body layui-row">
+							<div class="layui-col-md12">
+								<table class="layui-table">
+									<tbody>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="添加带看"></th>
+											<td></td>
+										</tr>
+										<tr>
+											<th width="40%">删除带看记录</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">删除房源跟进</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+														<option value="本小组">本小组</option>
+														<option value="本人">本人</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">删除客源跟进</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">添加钥匙</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">修改钥匙</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">删除钥匙</th>
+											<td style="text-align: right;">
+												<div class="layui-input-inline" style="text-align: left;">
+													<select name="quyu">
+														<option value="全公司">全公司</option>
+														<option value="本区域">本区域</option>
+														<option value="本门店">本门店</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script id="formBox9" type="text/html">
+		<div></div>
+		<div style="padding:10px;">
+			<div class="layui-row layui-col-space15">
+				<div class="layui-col-md12">
+					<div class="layui-card">
+						<div class="layui-card-body layui-row">
+							<div class="layui-col-md12">
+								<table class="layui-table">
+									<tbody>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="添加办件流程"></th>
+											<td></td>
+										</tr>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="修改办件流程"></th>
+											<td style="text-align: right;">
+
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="删除办件流程"></th>
+											<td style="text-align: right;">
+
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script id="formBox10" type="text/html">
+		<div></div>
+		<div style="padding:10px;">
+			<div class="layui-row layui-col-space15">
+				<div class="layui-col-md12">
+					<div class="layui-card">
+						<div class="layui-card-body layui-row">
+							<div class="layui-col-md12">
+								<table class="layui-table">
+									<tbody>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="删除员工"></th>
+											<td></td>
+										</tr>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="启用禁用手机端"></th>
+											<td style="text-align: right;">
+
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="添加公司公告"></th>
+											<td style="text-align: right;">
+
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="修改公司公告"></th>
+											<td style="text-align: right;"></td>
+										</tr>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="删除公司公告"></th>
+											<td style="text-align: right;"></td>
+										</tr>
+										<tr>
+											<th width="40%">安全控制</th>
+											<td style="text-align: left;">
+												<div class="layui-inline layui-form-item" style="margin-bottom: 0;">
+													<div class="layui-form-mid">超过</div>
+													<div class="layui-input-inline" style="width: 100px;">
+														<input type="text" name="price_min" placeholder="" autocomplete="off"
+															class="layui-input">
+													</div>
+													<div class="layui-form-mid">分钟不操作，自动锁定系统</div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">业绩员工显示前</th>
+											<td style="text-align: left;">
+												<div class="layui-inline layui-form-item" style="margin-bottom: 0;">
+													<div class="layui-input-inline" style="width: 100px;">
+														<input type="text" name="price_min" placeholder="" autocomplete="off"
+															class="layui-input">
+													</div>
+													<div class="layui-form-mid">名</div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">实勘王显示前</th>
+											<td style="text-align: left;">
+												<div class="layui-inline layui-form-item" style="margin-bottom: 0;">
+													<div class="layui-input-inline" style="width: 100px;">
+														<input type="text" name="price_min" placeholder="" autocomplete="off"
+															class="layui-input">
+													</div>
+													<div class="layui-form-mid">名</div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">钥匙王显示前</th>
+											<td style="text-align: left;">
+												<div class="layui-inline layui-form-item" style="margin-bottom: 0;">
+													<div class="layui-input-inline" style="width: 100px;">
+														<input type="text" name="price_min" placeholder="" autocomplete="off"
+															class="layui-input">
+													</div>
+													<div class="layui-form-mid">名</div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">带看王显示前</th>
+											<td style="text-align: left;">
+												<div class="layui-inline layui-form-item" style="margin-bottom: 0;">
+													<div class="layui-input-inline" style="width: 100px;">
+														<input type="text" name="price_min" placeholder="" autocomplete="off"
+															class="layui-input">
+													</div>
+													<div class="layui-form-mid">名</div>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script id="formBox11" type="text/html">
+		<div></div>
+		<div style="padding:10px;">
+			<div class="layui-row layui-col-space15">
+				<div class="layui-col-md12">
+					<div class="layui-card">
+						<div class="layui-card-body layui-row">
+							<div class="layui-col-md12">
+								<table class="layui-table">
+									<tbody>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="添加商圈"></th>
+											<td></td>
+										</tr>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="上传照片"></th>
+											<td style="text-align: right;">
+
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="添加栋座"></th>
+											<td style="text-align: right;">
+
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="修改栋座"></th>
+											<td style="text-align: right;"></td>
+										</tr>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="删除栋座"></th>
+											<td style="text-align: right;"></td>
+										</tr>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="添加批量栋座"></th>
+											<td style="text-align: right;">
+
+											</td>
+										</tr>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="修改批量栋座"></th>
+											<td style="text-align: right;"></td>
+										</tr>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="删除批量栋座"></th>
+											<td style="text-align: right;"></td>
+										</tr>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="添加楼盘"></th>
+											<td style="text-align: right;"></td>
+										</tr>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="修改楼盘"></th>
+											<td style="text-align: right;"></td>
+										</tr>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="删除楼盘"></th>
+											<td style="text-align: right;"></td>
+										</tr>
+										<tr>
+											<th width="40%">
+												<input type="checkbox" name="home" lay-skin="primary" title="周边配套"></th>
+											<td style="text-align: right;"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script src="../layui/layui.js"></script>
+	<script src="js/info1.js"></script>
+</body>
+
+</html>
+<!--
+
+-->

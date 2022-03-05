@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+<head>
+  <meta charset="utf-8">
+  <title>基本设置</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="../layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="../css/admin.css" media="all">
+    <link rel="stylesheet" href="css/main1.css" media="all">
+  <style>
+    .orgbox{
+        display: inline-block;
+        height: 510px;
+        border: 1px solid #ddd;
+        overflow: auto;
+    }
+    .site-tips{
+        display: inline-block;
+        vertical-align: top;
+    }
+</style>
+</head>
+<body style="height: 100%;overflow: hidden;">
+  
+  <div class="layui-fluid" id="LAY-app-table" style="height: 95%;overflow: hidden;">
+    <div class="layui-card layui-row layui-col-space15" style="padding: 15px;height: 100%;">
+       <div class="layui-card-header">选项设置</div>
+        <div class="orgbox layui-col-md2">
+            <ul id="demo2"></ul>
+        </div>
+        <div class="site-tips layui-col-md10" id="demo2-view" style="height: 95%;">
+          	<form class="layui-form" action="" lay-filter="component-form-element" style="height: 100%;">
+					<div style="max-height:90%;overflow-x: hidden;overflow-y: auto;">	
+						<div id="viewForm">
+							
+						</div>
+					</div>
+				   <div class="layui-form-item" style="margin-top: 10px;">
+							<div class="layui-input-block block">
+								<button class="layui-btn" lay-submit lay-filter="component-form-element">立即提交</button>
+								<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+							</div>
+						</div>
+            </form>
+        </div>
+    </div>
+</div>
+<script id="formBox" type="text/html">
+    <div></div>
+   <div style="padding:10px; background-color: #F2F2F2;">
+		<div class="layui-row layui-col-space15">
+			<div class="layui-col-md6">
+				<div class="layui-card">
+					<div class="layui-card-header">房源查看</div>
+					<div class="layui-card-body layui-row">
+					  <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="新增出售房源可选公/私盘">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="新增出售房源默认为私盘/私盘">
+							</div>
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="新增出租房源可选公/私盘">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="新增出租房源默认为私盘">
+							</div>
+					  </div>
+					   <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="启用房源审核功能">
+							</div>
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="房源审核后进入房源列表">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="新增房源必须符合有效性规则">
+								<div style="color:#ccc"></div>
+							</div>
+					  </div>
+					   <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<div class="layui-inline  layui-form-item">
+									 <div class="layui-form-mid">每人每天最多可以新增</div>
+								  <div class="layui-input-inline" style="width: 40px;">
+									<input type="number" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+								  </div>
+								  <div class="layui-form-mid">条房源</div>
+								</div>
+							</div>
+							<div class="layui-col-md6 ">
+								<div class="layui-inline layui-form-item">
+									 <div class="layui-form-mid">每人每天最多可以新增</div>
+								  <div class="layui-input-inline" style="width: 40px;">
+									<input type="number" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+								  </div>
+								  <div class="layui-form-mid">条房源</div>
+								</div>
+							</div>
+					  </div>
+					</div>
+				</div>
+				<div class="layui-card">
+					<div class="layui-card-header">查重规则</div>
+					<div class="layui-card-body layui-row">
+					  <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="新增出售房源可选公/私盘">
+							</div>
+					  </div>
+					</div>
+				</div>
+				<div class="layui-card">
+					<div class="layui-card-header">数量限制</div>
+					<div class="layui-card-body layui-row">
+						<div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<div class="layui-inline  layui-form-item">
+									 <div class="layui-form-mid">每部门最多可以拥有</div>
+								  <div class="layui-input-inline" style="width: 40px;">
+									<input type="number" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+								  </div>
+								  <div class="layui-form-mid">条优质房源</div>
+								</div>
+							</div>
+							<div class="layui-col-md6 ">
+								<div class="layui-inline layui-form-item">
+									 <div class="layui-form-mid">每人最多可以拥有</div>
+								  <div class="layui-input-inline" style="width: 40px;">
+									<input type="number" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+								  </div>
+								  <div class="layui-form-mid">条优质房源</div>
+								</div>
+							</div>
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<div class="layui-inline  layui-form-item">
+									 <div class="layui-form-mid">每人最多可以拥有</div>
+								  <div class="layui-input-inline" style="width: 40px;">
+									<input type="number" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+								  </div>
+								  <div class="layui-form-mid">条优质房源</div>
+								</div>
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="数量只对有效私盘">
+							</div>
+					  </div>
+					</div>
+				</div>
+				<div class="layui-card">
+					<div class="layui-card-header">颜色提醒规则</div>
+					<div class="layui-card-body layui-row">
+						<div class="layui-col-md12  margin">
+							<div class="layui-inline  layui-form-item">
+								 <div class="layui-form-mid">出售房源跟进逾期超过</div>
+							  <div class="layui-input-inline" style="width: 40px;">
+								<input type="number" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+							  </div>
+							  <div class="layui-form-mid">天变黄色，超过</div>
+							  <div class="layui-input-inline" style="width: 40px;">
+								<input type="number" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+							  </div>
+							  <div class="layui-form-mid">天变红色</div>
+							</div>
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<div class="layui-inline  layui-form-item">
+								 <div class="layui-form-mid">出租房源跟进逾期超过</div>
+							  <div class="layui-input-inline" style="width: 40px;">
+								<input type="number" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+							  </div>
+							  <div class="layui-form-mid">天变黄色，超过</div>
+							  <div class="layui-input-inline" style="width: 40px;">
+								<input type="number" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+							  </div>
+							  <div class="layui-form-mid">天变红色</div>
+							</div>
+					  </div>
+					</div>
+				</div>
+					<div class="layui-card">
+					<div class="layui-card-header">必填项（出售）</div>
+					<div class="layui-card-body layui-row">
+					  <div class="layui-col-md12  margin">
+							<input type="checkbox" name="" lay-skin="primary" title="房源〔户型〕必填">
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="房源〔建房年份〕必填">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="房源〔来源〕必填">
+							</div>
+					  </div>
+					   <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="房源〔使用面积〕必填">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="房源〔委托方式〕必填">
+							</div>
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="房源〔委托编号〕必填">
+							</div>
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<input type="checkbox" name="" lay-skin="primary" title="房源〔朝向〕必填">
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<input type="checkbox" name="" lay-skin="primary" title="房源〔总层〕必填">
+					  </div>
+					   <div class="layui-col-md12  margin">
+							<input type="checkbox" name="" lay-skin="primary" title="房源〔装修〕必填">
+					  </div>
+						<div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="房源〔等级〕必填">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="房源〔委托到期日期〕必填">
+							</div>
+					  </div>
+						<div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="房源〔现状〕必填">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="房源〔产权〕必填">
+							</div>
+					  </div>
+					</div>
+				</div>
+
+			</div>
+			<div class="layui-col-md6">
+				<div class="layui-card">
+					<div class="layui-card-header">必填项（出租）</div>
+					<div class="layui-card-body layui-row">
+					  <div class="layui-col-md12  margin">
+							<input type="checkbox" name="" lay-skin="primary" title="房源〔户型〕必填">
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="房源〔建房年份〕必填">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="房源〔来源〕必填">
+							</div>
+					  </div>
+					   <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="房源〔使用面积〕必填">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="房源〔委托方式〕必填">
+							</div>
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="房源〔委托编号〕必填">
+							</div>
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<input type="checkbox" name="" lay-skin="primary" title="房源〔朝向〕必填">
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<input type="checkbox" name="" lay-skin="primary" title="房源〔总层〕必填">
+					  </div>
+					   <div class="layui-col-md12  margin">
+							<input type="checkbox" name="" lay-skin="primary" title="房源〔装修〕必填">
+					  </div>
+						<div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="房源〔等级〕必填">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="房源〔委托到期日期〕必填">
+							</div>
+					  </div>
+						<div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="房源〔现状〕必填">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="房源〔产权〕必填">
+							</div>
+					  </div>
+					</div>
+				</div>
+				<div class="layui-card">
+					<div class="layui-card-header">跟进规则</div>
+					<div class="layui-card-body layui-row">
+					   <div class="layui-col-md12  margin">
+							<div class="layui-col-md12">
+								<div class="layui-inline  layui-form-item">
+									 <div class="layui-form-mid">写入跟进字数不少于</div>
+								  <div class="layui-input-inline" style="width: 40px;">
+									<input type="number" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+								  </div>
+								  <div class="layui-form-mid"> 汉字</div>
+								</div>
+							</div>
+					  </div>
+					</div>
+				</div>
+				<div class="layui-card">
+					<div class="layui-card-header">其它</div>
+					<div class="layui-card-body layui-row">
+					   <div class="layui-col-md12  margin">
+							<div class="layui-inline  layui-form-item">
+								 <div class="layui-form-mid">房源状态由非有效状态改为有效状态时，提示更新委托日期且委托方式默认为</div>
+							  <div class="layui-input-inline" style="width: 80px;">
+									<select>
+										<option>未签</option>
+										<option>签约</option>
+										<option>独家</option>
+										<option>托管</option>
+										<option>收购</option>
+									</select>
+							  </div>
+							</div>
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<div class="layui-inline  layui-form-item">
+								 <div class="layui-form-mid">每条房源每天看业主不超过</div>
+								<div class="layui-input-inline" style="width: 40px;">
+									<input type="number" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+								  </div>
+								  <div class="layui-form-mid">次</div>
+							</div>
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<input type="checkbox" name="" lay-skin="primary" title="自己房源看业主不计次数、不写跟进">
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<input type="checkbox" name="" lay-skin="primary" title="优质房置顶显示">
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<input type="checkbox" name="" lay-skin="primary" title="私盘看电话权限所有归属员工同维护归属员工权限">
+					  </div>
+					   <div class="layui-col-md12  margin">
+							<input type="checkbox" name="" lay-skin="primary" title="房源修改权限所有归属员工同维护归属员工权限">
+					  </div>
+					   <div class="layui-col-md12  margin">
+							<input type="checkbox" name="" lay-skin="primary" title="登记钥匙默认生成钥匙归属">
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>
+<script id="formBox1" type="text/html">
+    <div></div>
+    <div style="padding:10px; background-color: #F2F2F2;">
+		<div class="layui-row layui-col-space15">
+			<div class="layui-col-md6">
+				<div class="layui-card">
+					<div class="layui-card-header">新增客源选项</div>
+					<div class="layui-card-body layui-row">
+					  <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源审核后进入客源列表">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="优质客置顶显示">
+							</div>
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="新增求购客源默认为私客">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="新增求购客源可选公私客">
+							</div>
+					  </div>
+					   <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="新增求租客源默认为私客">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="新增求租客源可选公私客">
+							</div>
+					  </div>
+					   <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="新增客源进行黑名单检查">
+							</div>
+					  </div>
+					</div>
+				</div>
+				<div class="layui-card">
+					<div class="layui-card-header">数量限制</div>
+					<div class="layui-card-body layui-row">
+						<div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<div class="layui-inline  layui-form-item">
+									 <div class="layui-form-mid">每人最多可以拥有</div>
+								  <div class="layui-input-inline" style="width: 40px;">
+									<input type="number" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+								  </div>
+								  <div class="layui-form-mid">条私客</div>
+								</div>
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="数量只对有效私客">
+							</div>
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<div class="layui-inline  layui-form-item">
+									 <div class="layui-form-mid">每条客源每天跟进不超过</div>
+								  <div class="layui-input-inline" style="width: 40px;">
+									<input type="number" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+								  </div>
+								  <div class="layui-form-mid">次</div>
+								</div>
+							</div>
+							<div class="layui-col-md6 ">
+								<div class="layui-inline layui-form-item">
+									 <div class="layui-form-mid">客源的跟进逾期超过</div>
+								  <div class="layui-input-inline" style="width: 40px;">
+									<input type="number" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+								  </div>
+								  <div class="layui-form-mid">天以红色显示</div>
+								</div>
+							</div>
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<div class="layui-col-md12">
+								<div class="layui-inline  layui-form-item">
+									 <div class="layui-form-mid">每个客户每天可被看</div>
+								  <div class="layui-input-inline" style="width: 40px;">
+									<input type="number" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+								  </div>
+								  <div class="layui-form-mid">次</div>
+								</div>
+							</div>
+					  </div>
+					</div>
+				</div>
+				<div class="layui-card">
+					<div class="layui-card-header">跟进规则</div>
+					<div class="layui-card-body layui-row">
+					   <div class="layui-col-md12  margin">
+							<div class="layui-col-md12">
+								<div class="layui-inline  layui-form-item">
+									 <div class="layui-form-mid">写入跟进字数不少于</div>
+								  <div class="layui-input-inline" style="width: 40px;">
+									<input type="number" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+								  </div>
+								  <div class="layui-form-mid"> 汉字</div>
+								</div>
+							</div>
+					  </div>
+					</div>
+				</div>
+
+			</div>
+			<div class="layui-col-md6">
+				<div class="layui-card">
+					<div class="layui-card-header">必填项（求购）</div>
+					<div class="layui-card-body layui-row">
+					  <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔来源〕必填">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔等级〕必填">
+							</div>
+					  </div>
+					   <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔目的〕必填">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔城区〕必填">
+							</div>
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔价格〕必填">
+							</div>
+							<div class="layui-col-md6">
+							<input type="checkbox" name="" lay-skin="primary" title="客源〔付款方式〕必填">
+							</div>
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔户型〕必填">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔楼层〕必填">
+							</div>
+					  </div>
+						<div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔商圈〕必填">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔面积〕必填">
+							</div>
+					  </div>
+						<div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="〔委托方式〕必填">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔现状〕必填">
+							</div>
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔朝向〕必填">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔装修〕必填">
+							</div>
+					  </div>
+					</div>
+				</div>
+				<div class="layui-card">
+					<div class="layui-card-header">必填项（求租）</div>
+					<div class="layui-card-body layui-row">
+					  <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔来源〕必填">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔等级〕必填">
+							</div>
+					  </div>
+					   <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔目的〕必填">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔城区〕必填">
+							</div>
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔价格〕必填">
+							</div>
+							<div class="layui-col-md6">
+							<input type="checkbox" name="" lay-skin="primary" title="客源〔付款方式〕必填">
+							</div>
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔户型〕必填">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔楼层〕必填">
+							</div>
+					  </div>
+						<div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔商圈〕必填">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔面积〕必填">
+							</div>
+					  </div>
+						<div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="〔委托方式〕必填">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔现状〕必填">
+							</div>
+					  </div>
+					  <div class="layui-col-md12  margin">
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔朝向〕必填">
+							</div>
+							<div class="layui-col-md6">
+								<input type="checkbox" name="" lay-skin="primary" title="客源〔装修〕必填">
+							</div>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>
+<script id="formBox2" type="text/html">
+	<div style="padding:10px; background-color: #F2F2F2;">
+			<div class="layui-row layui-col-space15">
+				<div class="layui-col-md6">
+					<div class="layui-card">
+						<div class="layui-card-header">安全控制</div>
+						<div class="layui-card-body layui-row">
+							<div class="layui-col-md12  margin">
+								<div class="layui-inline  layui-form-item">
+									 <div class="layui-form-mid">超过</div>
+								  <div class="layui-input-inline" style="width: 40px;">
+									<input type="number" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+								  </div>
+								  <div class="layui-form-mid">分钟不操作，自动锁定系统</div>
+								</div>
+						  </div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-md6">
+					<div class="layui-card">
+						<div class="layui-card-header">工作台</div>
+						<div class="layui-card-body layui-row">
+							<div class="layui-col-md12  margin">
+								<div class="layui-inline  layui-form-item">
+									 <div class="layui-form-mid">业绩员工显示前</div>
+								  <div class="layui-input-inline" style="width: 40px;">
+									<input type="number" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+								  </div>
+								  <div class="layui-form-mid">名</div>
+								</div>
+							</div>
+							<div class="layui-col-md12  margin">
+								<div class="layui-inline  layui-form-item">
+									 <div class="layui-form-mid">战榜员工显示前</div>
+								  <div class="layui-input-inline" style="width: 40px;">
+									<input type="number" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+								  </div>
+								  <div class="layui-form-mid">名</div>
+								</div>
+							</div>
+							<div class="layui-col-md12  margin">
+								<div class="layui-inline  layui-form-item">
+									 <div class="layui-form-mid">员工统计显示</div>
+								  <div class="layui-input-inline" style="width: 40px;">
+									<input type="number" name="price_min" placeholder="" autocomplete="off" class="layui-input">
+								  </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</script>
+<script src="../layui/layui.js"></script>  
+<script src="js/info.js"></script>
+</body>
+</html>
+<!--
+
+-->

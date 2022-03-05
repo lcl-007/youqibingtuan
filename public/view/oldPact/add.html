@@ -1,0 +1,526 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <link rel="stylesheet" href="../../lib/layui1/css/layui.css">
+  <link rel="stylesheet" href="../../css/global.css">
+   <link rel="stylesheet" href="../../css/animate.min.css">
+</head>
+<body style="margin: 0;">
+<div class="fly-panel fly-column">
+  <p class="title">新增合同</p>
+</div>
+<div class="layui-container" style="width: 100%;">
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-md12">
+    <form class="layui-form">
+     <!------------------------------------------------------------房源信息------------------------------------------------>
+      <div class="fly-panel" pad20 style="padding-top: 0;" id="home">
+        <div class="fly-panel-title fly-filter">
+          <a style="color: #177ce3;border-left: 2px #177ce3 solid;">物业信息</a>
+          <a href="javascript:void(0);" class="layui-show-xs-block fly-right" id="add" style="color: #177ce3;">+选择房源</a>
+        </div>
+			<div class="layui-form layui-form-pane">
+			<div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
+          <div class="layui-tab-item layui-show">
+              <div class="layui-row layui-col-space15 layui-form-item">
+               <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label"><span class="important">*</span>物业地址</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="address" readonly lay-verify="required" autocomplete="off" class="layui-input" placeholder="选择房源物业位置（不可改）">
+                  </div>
+                </div>
+                <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">房源来源</label>
+                  <div class="layui-input-block">
+                     <input type="text" name="form" readonly autocomplete="off" class="layui-input">
+                  </div>
+                </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">物业用途</label>
+                  <div class="layui-input-block">
+                     <input type="text" name="use" readonly autocomplete="off" class="layui-input" placeholder="物业用途">
+                  </div>
+                </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">证件号码</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="papersN" autocomplete="off" class="layui-input" placeholder="证件号码">
+                  </div>
+                </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">证件地址</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="papersA" autocomplete="off" class="layui-input" placeholder="证件地址">
+                  </div>
+                </div>
+                <div class="layui-col-md2">
+                  <label for="L_title" class="layui-form-label"><span class="important">*</span>建筑面积</label>
+                  <div class="layui-input-block inline">
+                    <input type="text" name="build" lay-verify="required" autocomplete="off" class="layui-input" onkeyup="num(this)" placeholder="建筑面积"><span>㎡</span>
+                  </div>
+                </div>
+                <div class="layui-col-md2">
+                  <label for="L_title" class="layui-form-label"><span class="important">*</span>套内面积</label>
+                  <div class="layui-input-block inline">
+                    <input type="number" name="actual" lay-verify="required" autocomplete="off" class="layui-input" onkeyup="num(this)" placeholder="套内面积"><span>㎡</span>
+                  </div>
+                </div>
+                <style>
+                  .select span{
+                    width: 25%;
+                  }
+                  .select span .layui-form-select{
+                    width: 100%;
+
+                  }
+                </style>
+                <div class="layui-col-md5">
+                  <label class="layui-form-label"><span class="important">*</span>房源户型</label>
+                  <div class="layui-input-block select" style="display: flex;">
+                   <span id="room">
+                    <select lay-verify="required" name="room" lay-filter="column" lay-search=""> 
+                      <option>室</option> 
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                        </select>
+                   </span>
+
+                   <span id="hall">
+                      <select lay-verify="required" name="hall" lay-filter="column" lay-search=""> 
+                        <option>厅</option> 
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                      </select>
+                   </span>
+
+                   <span id="who">
+                    <select lay-verify="required" name="who" lay-filter="column" lay-search=""> 
+									<option>卫</option> 
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+                    </select>
+                   </span>
+                   <span id="balcony">
+                    <select lay-verify="required" name="balcony" lay-filter="column" lay-search=""> 
+							<option>阳台</option> 
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+                    </select>
+                   </span>
+                  </div>
+                </div>
+                <div class="layui-col-md3">
+						<label for="L_title" class="layui-form-label"><span class="important">*</span>楼层</label>
+						<div class="layui-input-block inline" style="display: flex;">
+							<input type="number" name="floor" lay-verify="required" autocomplete="off" class="layui-input" onkeyup="num(this)" placeholder="楼层" style="width: 45%;">
+							<span style="text-align: center;line-height: 38px;">/</span>
+							<input type="number" name="floorT" lay-verify="required" autocomplete="off" class="layui-input" onkeyup="num(this)" placeholder="总层" style="width: 45%;">
+						</div>
+                  </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label"><span class="important">*</span>合同金额</label>
+                  <div class="layui-input-block" style="display: flex;">
+								<input type="number" name="total" lay-verify="required" autocomplete="off" class="layui-input" onkeyup="num(this)" placeholder="金额" style="width: 70%;margin-right: 2%;">
+								<select name="unit" lay-filter="column" style="width: 28%;"> 
+									<option value="万元">万元</option>
+								</select>
+                  </div>
+                </div>
+                 <div class="layui-col-md3">
+							<label for="L_title" class="layui-form-label">成交单价</label>
+							<div class="layui-input-block inline">
+							<input type="number" name="price" lay-verify="required" autocomplete="off" class="layui-input" onkeyup="num(this)" placeholder="金额" style="width: 80%;"><span style="width: 20%;">元/㎡</span>
+							</div>
+                </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label"><span class="important">*</span>付款方式</label>
+                  <div class="layui-input-block">
+								<select name="payment" lay-verify="required" lay-filter="column"> 
+									<option></option>
+									<option value="一次付清">一次付清</option>
+									<option value="按揭">按揭</option>
+									<option value="垫资解按">垫资解按</option>
+								</select>
+                  </div>
+                </div>
+                <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">房产抵押</label>
+                  <div class="layui-input-block">
+								<select name="home" lay-filter="column"> 
+									<option value="无">无</option>
+									<option value="有">有</option>
+								</select>
+                  </div>
+                </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">解押时间</label>
+                  <div class="layui-input-block">
+								<input type="text" name="start" id="start" placeholder="解押日期" autocomplete="off" readonly class="layui-input">
+                  </div>
+                </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">租赁状态</label>
+                  <div class="layui-input-block">
+								<select name="lease" lay-filter="column"> 
+									<option value="无">无</option>
+									<option value="有">有</option>
+								</select>
+                  </div>
+                </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">到期时间</label>
+                  <div class="layui-input-block">
+								<input type="text" name="end" id="end" placeholder="到期时间" autocomplete="off" readonly class="layui-input">
+                  </div>
+                </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">业主姓名</label>
+                  <div class="layui-input-block">
+                     <input type="text" name="owner" lay-verify="required" autocomplete="off" class="layui-input" placeholder="业主姓名">
+                  </div>
+                </div>
+                 <div class="layui-col-md9">
+                  <label for="L_title" class="layui-form-label"><span class="important">*</span>业主电话</label>
+                  <div class="layui-input-block inline" style="display: flex;">
+						<input type="tel" name="phone1" lay-verify="required" autocomplete="off" class="layui-input" placeholder="电话1" style="width: 49.5%;margin-right: 1%;">
+						<input type="tel" name="phone2" autocomplete="off" class="layui-input" placeholder="电话2" style="width: 49.5%">
+                  </div>
+                </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label"><span class="important">*</span>联系地址</label>
+                  <div class="layui-input-block">
+                     <input type="text" name="addressM" lay-verify="required" autocomplete="off" class="layui-input" placeholder="联系地址">
+                  </div>
+                </div>
+                 <div class="layui-col-md9">
+                  <label for="L_title" class="layui-form-label"><span class="important">*</span>证件号码</label>
+                  <div class="layui-input-block card" style="display: flex;">
+                  		<select name="card"  lay-verify="required" lay-filter="column"> 
+							<option></option>
+							<option value="身份证">身份证</option>
+							<option value="护照">护照</option>
+							<option value="户口本">户口本</option>
+							<option value="军官证">军官证</option>
+						</select>
+						<input type="text" name="card1" lay-verify="required" autocomplete="off" class="layui-input" placeholder="证件号码" style="width: 49.5%">
+                  </div>
+                </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">代理人</label>
+                  <div class="layui-input-block">
+                     <input type="text" name="man" autocomplete="off" class="layui-input" placeholder="请输入姓名">
+                  </div>
+                </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">代理电话</label>
+                  <div class="layui-input-block">
+                     <input type="text" name="manPhone" autocomplete="off" class="layui-input" placeholder="请输入电话">
+                  </div>
+                </div>
+                <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">服务佣金</label>
+                  <div class="layui-input-block">
+								<input type="number" name="priceS" autocomplete="off" class="layui-input" onkeyup="num(this)" placeholder="金额（元）">
+                  </div>
+                </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">比例</label>
+                  <div class="layui-input-block inline">
+						<input type="number" name="priceL" autocomplete="off" class="layui-input" onkeyup="num(this)" placeholder="比例" style="width: 80%;"><span style="width: 20%;text-align: center;">%</span>
+                  </div>
+                </div>
+                <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">共有权人</label>
+                  <div class="layui-input-block">
+						<input type="text" name="manT" autocomplete="off" class="layui-input" placeholder="姓名">
+                  </div>
+                </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">共有权证号</label>
+                  <div class="layui-input-block">
+						<input type="number" name="priceL" autocomplete="off" class="layui-input" onkeyup="num(this)" placeholder="共有权证号">
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+			</div>
+      </div>
+       <!------------------------------------------------------------客源信息------------------------------------------------>
+      <div class="fly-panel" pad20  id="people">
+        <div class="fly-panel-title fly-filter">
+          <a style="color: #177ce3;border-left: 2px #177ce3 solid;">客源信息</a>
+          <a href="javascript:void(0);" class="layui-show-xs-block fly-right" id="addk" style="color: #177ce3;">+选择客源</a>
+        </div>
+			<div class="layui-form layui-form-pane">
+			<div class="layui-form layui-tab-content" style="padding: 20px 0;">
+          <div class="layui-tab-item layui-show">
+              <div class="layui-row layui-col-space15 layui-form-item">
+               <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">购房首付</label>
+                  <div class="layui-input-block inline">
+								<input type="number" name="putDown" autocomplete="off" class="layui-input" onkeyup="num(this)" placeholder="金额" style="width: 80%;"><span style="width: 20%;">万元</span>
+                  </div>
+                </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">日期</label>
+                  <div class="layui-input-block">
+								<input type="text" name="date" id="date" placeholder="日期" autocomplete="off" readonly class="layui-input">
+                  </div>
+                </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">支付方式</label>
+                  <div class="layui-input-block">
+								<select name="paymentK" lay-filter="column"> 
+									<option></option>
+									<option value="一次性付">一次性付</option>
+									<option value="新按揭">新按揭</option>
+									<option value="转按揭">转按揭</option>
+								</select>
+                  </div>
+                </div>
+                <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">服务佣金</label>
+                  <div class="layui-input-block">
+								<input type="number" name="priceSK" autocomplete="off" class="layui-input" onkeyup="num(this)" placeholder="金额（元）">
+                  </div>
+                </div>
+                <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">比例</label>
+                  <div class="layui-input-block inline">
+					<input type="number" name="priceL" autocomplete="off" class="layui-input" onkeyup="num(this)" placeholder="比例" style="width: 80%;"><span style="width: 20%;text-align: center;">%</span>
+                  </div>
+                </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label"><span class="important">*</span>客户姓名</label>
+                  <div class="layui-input-block">
+                     <input type="text" name="client" autocomplete="off" lay-verify="required" readonly class="layui-input" placeholder="客户姓名">
+                  </div>
+                </div>
+                <div class="layui-col-md6">
+                  <label for="L_title" class="layui-form-label"><span class="important">*</span>客户电话</label>
+                  <div class="layui-input-block inline" style="display: flex;">
+					<input type="tel" name="phoneK1" autocomplete="off" class="layui-input" lay-verify="required" placeholder="电话1" style="width: 49.5%;margin-right: 1%;">
+					<input type="tel" name="phoneK2" autocomplete="off" class="layui-input"  placeholder="电话2" style="width: 49.5%">
+                  </div>
+                </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">客源来源</label>
+                  <div class="layui-input-block">
+                     <input type="text" name="formK" readonly autocomplete="off" class="layui-input">
+                  </div>
+                </div>
+               <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label"><span class="important">*</span>通讯地址</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="addressK" autocomplete="off" class="layui-input" lay-verify="required" placeholder="请输入联系地址">
+                  </div>
+                </div>
+                <div class="layui-col-md6">
+                  <label for="L_title" class="layui-form-label"><span class="important">*</span>证件号码</label>
+                  <div class="layui-input-block cardk" style="display: flex;">
+						<span id="cardK">
+							<select name="cardK" lay-verify="required" lay-filter="column"> 
+								<option></option>
+								<option value="身份证">身份证</option>
+								<option value="护照">护照</option>
+								<option value="户口本">户口本</option>
+								<option value="军官证">军官证</option>
+							</select>
+						</span>
+						<input type="text" name="cardK1" autocomplete="off" lay-verify="required" class="layui-input" placeholder="证件号码" style="width: 49.5%">
+                  </div>
+                </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">代理人</label>
+                  <div class="layui-input-block">
+                     <input type="text" name="manK" autocomplete="off" class="layui-input" placeholder="请输入姓名">
+                  </div>
+                </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">代理电话</label>
+                  <div class="layui-input-block">
+                     <input type="text" name="manPhoneK" autocomplete="off" class="layui-input" placeholder="请输入电话">
+                  </div>
+                </div>
+                 <div class="layui-col-md6">
+                  <label for="L_title" class="layui-form-label">证件号码</label>
+                  <div class="layui-input-block card" style="display: flex;">
+                  		<select name="cardKM" lay-filter="column"> 
+									<option></option>
+									<option value="身份证">身份证</option>
+									<option value="护照">护照</option>
+									<option value="户口本">户口本</option>
+									<option value="军官证">军官证</option>
+								</select>
+								<input type="text" name="cardKM1" autocomplete="off" class="layui-input" placeholder="证件号码" style="width: 49.5%">
+                  </div>
+                </div>
+                <div class="layui-col-md6">
+                  <label class="layui-form-label">共有权人</label>
+                  <div class="layui-input-block people">
+                   <input type="text" name="manTK" autocomplete="off" class="layui-input" placeholder="共有权人" style="width: 41%;margin: 0 2%;">
+                    <select name="class" lay-filter="column" style="margin: 0 2%;width: 10%;"> 
+                      		<option></option> 
+									<option value="身份证">身份证</option>
+									<option value="护照">护照</option>
+									<option value="户口本">户口本</option>
+									<option value="军官证">军官证</option>
+                    </select>
+                    <input type="text" name="manTN" autocomplete="off" class="layui-input" placeholder="共有权证号" style="width: 45%;margin: 0 0 0 2%;">
+                  </div>
+                </div>
+                <div class="layui-col-md6">
+                  <label class="layui-form-label">附加条款</label>
+                  <div class="layui-input-block">
+                   <input type="text" name="manTK" autocomplete="off" class="layui-input" placeholder="请输入内容" >
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+			</div>
+      </div>
+       <!------------------------------------------------------------签约信息------------------------------------------------>
+      <div class="fly-panel" pad20 style="margin-bottom: 60px;">
+        <div class="fly-panel-title fly-filter">
+          <a style="color: #177ce3;border-left: 2px #177ce3 solid;">签约信息</a>
+        </div>
+			<div class="layui-form layui-form-pane">
+			<div class="layui-form layui-tab-content" style="padding: 20px 0;">
+          <div class="layui-tab-item layui-show">
+              <div class="layui-row layui-col-space15 layui-form-item">
+               <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">合同编号</label>
+                  <div class="layui-input-block">
+								<input type="text" name="number" readonly autocomplete="off" class="layui-input" placeholder="合同编号">
+                  </div>
+                </div>
+                <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">合同状态</label>
+                  <div class="layui-input-block">
+								<select name="state" lay-filter="column"> 
+									<option></option>
+									<option value="成交确认">成交确认</option>
+									<option value="合同登记">合同登记</option>
+									<option value="权证过户">权证过户</option>
+									<option value="业务交割">业务交割</option>
+									<option value="售后服务">售后服务</option>
+									<option value="作废">作废</option>
+								</select>
+                  </div>
+                </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label"><span class="important">*</span>签约日期</label>
+                  <div class="layui-input-block">
+								<input type="text" name="dateSign" id="dateSign" placeholder="签约日期" autocomplete="off" readonly class="layui-input">
+                  </div>
+                </div>
+                 <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label">签约地址</label>
+                  <div class="layui-input-block">
+                     <input type="text" name="addressSign" autocomplete="off" class="layui-input" placeholder="签约地址">
+                  </div>
+                </div>
+                <div class="layui-col-md3">
+                  <label for="L_title" class="layui-form-label"><span class="important">*</span>算单依据</label>
+                  <div class="layui-input-block">
+                  		<select name="gist" lay-filter="column"> 
+                        <option value="售佣">售佣</option>
+                        <option value="房款">房款</option>
+                        <option value="税费">税费</option>
+                        <option value="按揭费">按揭费</option>
+                        <option value="评估费">评估费</option>
+                        <option value="查档费">查档费</option>
+                        <option value="定金">定金</option>
+                        <option value="退款">退款</option>
+                        <option value="其他">其他</option>
+                        <option value="代办费">代办费</option>
+                        <option value="银行返利">银行返利</option>
+                      </select>
+                  </div>
+                </div>
+                <div class="layui-col-md3">
+                  <label class="layui-form-label"><span class="important">*</span>签约员工</label>
+                  <div class="layui-input-block man">
+                    <select lay-verify="required" name="section" lay-filter="column" lay-search=""> 
+								<option></option> 
+								<option value="0">1</option>
+								<option value="1">2</option>
+                    </select>
+                    <select lay-verify="required" name="staff" lay-filter="column" lay-search=""> 
+                      <option></option> 
+                      <option value="0">1</option>
+								<option value="1">2</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="layui-col-md3">
+                  <label class="layui-form-label">合同备注</label>
+                  <div class="layui-input-block">
+                   <input type="text" name="manTK" autocomplete="off" class="layui-input" placeholder="请输入内容" >
+                  </div>
+                </div>
+                <div class="layui-col-md3">
+                  <label class="layui-form-label">合同模板</label>
+                  <div class="layui-input-block">
+                      <select name="mode" lay-filter="column"> 
+                        <option value="">请选择</option>
+                        <option value="二手房合同">二手房合同</option>
+                        <option value="租房合同">租房合同</option>
+                      </select>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+			</div>
+      </div>
+      <div class="layui-layer-btn layui-layer-btn-c fixed">
+		  <a class="layui-layer-btn0" lay-submit lay-filter="bind" id="next">下一步</a>
+		  <a class="layui-layer-btn1" id="close">放弃</a>
+      </div>
+     </form> 
+    </div>
+  </div>
+</div>
+<div class="fly-footer"></div>
+
+<script src="../../lib/layui/layui.js"></script>
+<script src="js/add.js"></script>
+</body>
+</html>

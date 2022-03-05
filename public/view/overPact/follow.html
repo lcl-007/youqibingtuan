@@ -1,0 +1,95 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>编辑合同</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link rel="stylesheet" href="../../lib/layui1/css/layui.css">
+<link rel="stylesheet" href="../../css/global.css">
+<link rel="stylesheet" href="../../css/animate.min.css">
+<style type="text/css">
+	.layui-form-radio {
+    line-height: 28px;
+    margin: 6px 10px 0 0;
+    padding-right: 10px;
+    cursor: pointer;
+    font-size: 14px; 
+}
+</style>
+</head>
+<body style="margin: 0;">
+<div class="layui-container" style="width: 100%;position: fixed;top:0;left: 0;">
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-md12">
+      <div class="fly-panel" pad20>
+			<div class="layui-form layui-form-pane">
+				<div class="layui-row layui-col-space15 layui-form-item">
+				  <div class="layui-col-md12">
+					  <label class="layui-form-label">跟进方式</label>
+					  <div class="layui-input-block">
+						<select lay-verify="required" name="section" lay-filter="column" lay-search=""> 
+							<option>跟进方式</option> 
+							<option value="拜访">拜访</option>
+							<option value="斡旋">斡旋</option>
+							<option value="电话">电话</option>
+						</select>
+					  </div>
+					</div>
+				   <div class="layui-col-md12">
+					  <label for="L_title" class="layui-form-label">跟进内容</label>
+					  <div class="layui-input-block">
+							<textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+					  </div>
+					</div> 
+<!--
+				  	<div class="layui-col-md12">
+					  <label for="L_title" class="layui-form-label">提醒时间</label>
+					  <div class="layui-input-block">
+							<input type="text" name="time" id="time" placeholder="选择日期" autocomplete="off" readonly class="layui-input">
+					  </div>
+					</div>
+					<div class="layui-col-md12">
+					  <label for="L_title" class="layui-form-label">提醒范围</label>
+					  <div class="layui-input-block">
+							<input type="radio" name="remind" value="全部" title="全部">
+							<input type="radio" name="remind" value="本人" title="本人">
+							<input type="radio" name="remind" value="本部" title="本部">
+					  </div>
+					</div>
+					<div class="layui-col-md12">
+					  <label for="L_title" class="layui-form-label">提醒内容</label>
+					  <div class="layui-input-block">
+							<textarea name="descs" placeholder="请输入内容" class="layui-textarea"></textarea>
+							 <div class="limit statistics" style="text-align: right;">0/300</div>
+					  </div>
+					</div>
+-->
+					<div class="layui-col-md6 layui-hide">
+					  <label for="L_title" class="layui-form-label">跟进人</label>
+					  <div class="layui-input-block">
+							<input type="text" name="man" value="同策房产-白杰 " readonly class="layui-input">
+					  </div>
+					</div>
+					<div class="layui-col-md6 layui-hide">
+					  <label for="L_title" class="layui-form-label">跟进时间</label>
+					  <div class="layui-input-block">
+							<input type="text" name="datetime" id="datetime" value="" readonly class="layui-input">
+					  </div>
+					</div>
+				  </div>
+			</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="fly-footer"></div>
+ <div class="layui-layer-btn layui-layer-btn-c fixed">
+	 <a class="layui-layer-btn0" id="ok">确定</a>
+	 <a class="layui-layer-btn1" id="close">取消</a>
+ </div>
+ <script src="../../lib/layui/layui.js"></script>
+<script src="js/follow.js"></script>
+</body>
+</html>

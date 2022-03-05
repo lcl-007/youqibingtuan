@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>添加文章</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="../../css/oksub.css">
+	<script type="text/javascript" src="../../lib/loading/okLoading.js"></script>
+	<link rel="stylesheet" href="../../lib/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css">
+	<style type="text/css">
+		#tabs{
+			width: 100%;	
+		}
+		#tabs li{
+			width: 90%;
+			border:1px #ccc solid;
+			font-size: 14px;
+			line-height: 44px;	
+			padding: 0 0 0 10px;
+			position: relative;	
+			border-radius: 5px;
+			margin: 2% auto;
+		}
+		#tabs li .close{
+			position: absolute;
+			background-color: rgba(0,0,0,0.2);
+			text-align:center;
+			width: 18px;
+			height: 18px;
+			line-height: 18px;
+			font-size: 12px;
+			color:#fff;
+			top:30%;
+			right: 10px;
+			border-radius: 50px;
+			overflow: hidden;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="ok-body">
+		<!--form表单-->
+		<div class="layui-form layui-form-pane ok-form layui-row layui-col-space15">
+			<div class="layui-col-xs12 layui-col-md12">
+				<div class="layui-form-item">
+					<label class="layui-form-label">模板名称</label>
+					<div class="layui-input-inline">
+						<input type="text" name="label" placeholder="请输入模板名称" autocomplete="off" class="layui-input">
+					</div>
+					<div class="layui-input-inline">
+						<button  id="varan" class="layui-btn layui-btn-normal">添加变量</button>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					
+				</div>
+				<div class="layui-form-item layui-form-text">
+					<!-- <label class="layui-form-label">内容</label> -->
+					<div class="layui-input-block">
+					<div id="editor"></div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<button class="layui-btn" lay-submit lay-filter="addArticle">立即提交</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!--js逻辑-->
+<script src="../../lib/layui/layui.js"></script>
+<script src="../../lib/ckeditor/ckeditor.js"></script>
+<script src="../../lib/ckeditor/samples/js/sample.js"></script>
+<script>
+	initSample();
+</script>
+<script>
+	layui.use(["form", "okUtils", "okLayer","layer"], function () {
+		let form = layui.form;
+		let okUtils = layui.okUtils;
+		let okLayer = layui.okLayer;
+		let $ = layui.jquery;
+		okLoading.close();
+		var height = $(document).height();
+		if ( CKEDITOR.env.ie && CKEDITOR.env.version < 9 )
+			CKEDITOR.tools.enableHtml5Elements( document );
+			CKEDITOR.config.height = height - 300;
+			CKEDITOR.config.width = 'auto';
+		var editorElement = CKEDITOR.document.getById( 'editor' );
+		var editor = CKEDITOR.replace('editor',{
+				extraPlugins:'placeholder'
+			});
+			CKEDITOR.instances.editor.setData("<p>内容</p>");
+			$("#varan").click(function () {
+				//页面层
+					CKEDITOR.tools.callFunction(153,this);
+		  });
+		form.on("submit(addArticle)", function (data) {
+			okUtils.ajax("/article/addArticle", "post", data.field, true).done(function (response) {
+				okLayer.greenTickMsg(response.msg, function () {
+					parent.layer.close(parent.layer.getFrameIndex(window.name));
+				});
+			}).fail(function (error) {
+				console.log(error)
+			});
+			return false;
+		});
+	});
+</script>
+</body>
+</html>
+
+
